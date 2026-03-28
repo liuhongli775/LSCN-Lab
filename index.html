@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>语言符号认知神经科学实验室 | 四川大学文学与新闻学院</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2b6cb0;
+      --primary-dark: #0f2440;
+      --accent: #b91c1c;
+      --accent-light: #dc2626;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --text-dark: #1e293b;
+      --text-body: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.8;
+      background: var(--bg-light);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Navigation ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--primary);
+    }
+
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .nav-logo-text {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-muted);
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+      padding: 4px 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 1px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%);
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.08) 0%, transparent 45%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-neurons {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .neuron {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.12), transparent);
+      animation: neuronPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes neuronPulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.5); opacity: 0.6; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 120px 24px 80px;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: dotBlink 2s infinite;
+    }
+
+    @keyframes dotBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 900;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 12px;
+      font-weight: 300;
+      letter-spacing: 4px;
+    }
+
+    .hero-desc {
+      font-size: clamp(14px, 2vw, 16px);
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 24px auto 48px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 4px;
+    }
+
+    /* ===== Sections Common ===== */
+    .section {
+      padding: 100px 24px;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .section-tag::before,
+    .section-tag::after {
+      content: '';
+      width: 24px;
+      height: 1.5px;
+      background: var(--primary);
+      opacity: 0.3;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-body);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ===== About Section ===== */
+    .about {
+      background: var(--bg-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card-main {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: var(--radius);
+      padding: 40px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card-main::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+    }
+
+    .about-card-main h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .about-card-main p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.9;
+    }
+
+    .about-card-float {
+      position: absolute;
+      bottom: -30px;
+      right: -20px;
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .about-card-float-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .about-card-float-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .about-card-float-text span {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .about-content h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 2;
+      margin-bottom: 16px;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--bg-light);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+
+    .highlight-item:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .highlight-icon {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .highlight-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .highlight-text span {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ===== PI Section ===== */
+    .pi-section {
+      background: var(--bg-light);
+    }
+
+    .pi-card {
+      background: var(--bg-white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .pi-photo {
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 32px;
+      position: relative;
+    }
+
+    .pi-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 3px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 24px;
+    }
+
+    .pi-name-title h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .pi-name-title p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .pi-info {
+      padding: 48px;
+    }
+
+    .pi-info h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .pi-info .pi-subtitle {
+      font-size: 15px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .pi-bio {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 2;
+      margin-bottom: 32px;
+    }
+
+    .pi-timeline {
+      margin-top: 32px;
+    }
+
+    .pi-timeline h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-list {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline-list::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--border));
+      border-radius: 1px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -21px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid white;
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+
+    .timeline-year {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timeline-text {
+      font-size: 13px;
+      color: var(--text-body);
+      margin-top: 2px;
+    }
+
+    .pi-contact {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    .contact-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--primary);
+    }
+
+    /* ===== Research Section ===== */
+    .research {
+      background: var(--bg-white);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .research-card {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .research-card:hover {
+      background: white;
+      border-color: var(--border);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .research-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .research-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .research-card h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .research-card p {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.9;
+    }
+
+    /* ===== Publications Section ===== */
+    .publications {
+      background: var(--bg-light);
+    }
+
+    .pub-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pub-item {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      padding-left: 42px;
+    }
+
+    .pub-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .pub-item:hover {
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+    }
+
+    .pub-year {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .pub-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .pub-text em {
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .pub-journal {
+      font-size: 12px;
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* ===== Facilities Section ===== */
+    .facilities {
+      background: var(--bg-white);
+    }
+
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .facility-card {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: var(--radius);
+      background: var(--bg-light);
+      transition: var(--transition);
+    }
+
+    .facility-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .facility-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 16px;
+      display: flex;
+      align-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+    }
+
+    .facility-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .facility-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact {
+      background: linear-gradient(160deg, var(--primary-dark), var(--primary));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .contact .section-tag {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact .section-tag::before,
+    .contact .section-tag::after {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .contact .section-title {
+      color: white;
+    }
+
+    .contact .section-desc {
+      color: rgba(255,255,255,0.65);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-2px);
+    }
+
+    .contact-card-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .contact-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    .contact-card a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-card a:hover {
+      color: white;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--primary-dark);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      font-size: 20px;
+      opacity: 0.4;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      opacity: 0.8;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .hero-content {
+        padding: 100px 20px 60px;
+      }
+
+      .hero-stats {
+        gap: 32px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-card-float {
+        right: 16px;
+        bottom: -20px;
+      }
+
+      .pi-card {
+        grid-template-columns: 1fr;
+      }
+
+      .pi-photo {
+        padding: 40px 24px;
+      }
+
+      .pi-info {
+        padding: 32px 24px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .facilities-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .stat-number {
+        font-size: 28px;
+      }
+
+      .facilities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">L</div>
+        <div class="nav-logo-text">
+          LSCN Lab
+          <span>Language Symbol Cognitive Neuroscience</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">关于实验室</a></li>
+        <li><a href="#pi">负责人</a></li>
+        <li><a href="#research">研究方向</a></li>
+        <li><a href="#publications">学术成果</a></li>
+        <li><a href="#facilities">实验设备</a></li>
+        <li><a href="#contact">联系我们</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-neurons">
+      <div class="neuron" style="width:200px;height:200px;top:10%;left:5%;animation-delay:0s;"></div>
+      <div class="neuron" style="width:150px;height:150px;top:60%;right:10%;animation-delay:1s;"></div>
+      <div class="neuron" style="width:100px;height:100px;top:30%;right:25%;animation-delay:2s;"></div>
+      <div class="neuron" style="width:120px;height:120px;bottom:15%;left:20%;animation-delay:0.5s;"></div>
+      <div class="neuron" style="width:80px;height:80px;top:15%;right:40%;animation-delay:1.5s;"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        四川大学 · 文学与新闻学院
+      </div>
+      <h1 class="hero-title">语言符号认知神经科学实验室</h1>
+      <p class="hero-subtitle">Language Symbol Cognitive Neuroscience Laboratory</p>
+      <p class="hero-desc">
+        运用心理学与脑科学实验技术，揭示汉语语音、文字、词汇、句法及二语习得的认知神经机制，推动语言科学与认知科学的交叉融合。
+      </p>
+      <div class="hero-actions">
+        <a href="#research" class="btn btn-primary">查看研究方向 &#8594;</a>
+        <a href="#contact" class="btn btn-outline">联系我们</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">11+</span>
+          <span class="stat-label">SCI/SSCI 论文</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">5</span>
+          <span class="stat-label">核心研究方向</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">2020</span>
+          <span class="stat-label">建室年份</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">关于实验室</h2>
+        <p class="section-desc">立足语言认知科学前沿，以实验方法探索语言的本质奥秘</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-card-main">
+            <h3>语言 × 认知 × 神经科学</h3>
+            <p>实验室致力于探索语言符号加工背后的认知神经机制。我们采用事件相关电位（ERP）、行为实验等先进技术手段，系统研究汉语相关加工过程，在心理语言学和神经语言学领域产出高水平科研成果。</p>
+          </div>
+          <div class="about-card-float">
+            <div class="about-card-float-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="about-card-float-text">
+              SCU 双一流
+              <span>国家级重点学科支持</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-content">
+          <h2>探索语言认知的科学前沿</h2>
+          <p>语言符号认知神经科学实验室成立于2020年，隶属于四川大学文学与新闻学院传播科学与技术实验室体系，依托学院强大的人文社科平台与跨学科优势，聚焦汉语言认知加工的神经机制研究。</p>
+          <p>实验室不仅在基础研究领域持续深耕，也积极参与人才培养和学术交流，为心理学、语言学、神经科学等交叉学科领域培养具备前沿实验技能的研究力量。</p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">ERP</div>
+              <div class="highlight-text">脑电技术
+                <span>事件相关电位实验</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">EEG</div>
+              <div class="highlight-text">行为实验
+                <span>心理学实验范式</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">N1</div>
+              <div class="highlight-text">神经机制
+                <span>语言加工脑机制</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">L2</div>
+              <div class="highlight-text">二语习得
+                <span>跨语言对比研究</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PI Section -->
+  <section class="section pi-section" id="pi">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Principal Investigator</div>
+        <h2 class="section-title">实验室负责人</h2>
+        <p class="section-desc">谷丰 副教授 / 副研究员</p>
+      </div>
+      <div class="pi-card">
+        <div class="pi-photo">
+          <div class="pi-avatar">谷</div>
+          <div class="pi-name-title">
+            <h3>谷丰</h3>
+            <p>副教授 / 副研究员 · 博士生导师</p>
+          </div>
+        </div>
+        <div class="pi-info">
+          <div class="pi-subtitle">心理语言学 · 神经语言学</div>
+          <p class="pi-bio">
+            谷丰，安徽省马鞍山市人。2012年获中国科学技术大学神经生物学专业博士学位，后分别于中国科学院脑功能与脑疾病重点实验室（2012-2015）和香港大学言语与听觉科学学部（2015-2018）从事博士后研究工作。2020年入职四川大学文学与新闻学院，担任语言符号认知神经科学实验室负责人。
+          </p>
+          <p class="pi-bio">
+            研究方向为汉语言相关的认知神经机制，利用心理学和脑科学实验技术对汉语语音、文字、词汇、句法、二语习得等心理和神经机制开展了系统研究。截止2023年，以第一作者或通讯作者发表SCI/SSCI论文11篇。
+          </p>
+          <div class="pi-timeline">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              学术履历
+            </h4>
+            <div class="timeline-list">
+              <div class="timeline-item">
+                <div class="timeline-year">2020 - 至今</div>
+                <div class="timeline-text">四川大学文学与新闻学院，副教授</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2015 - 2018</div>
+                <div class="timeline-text">香港大学言语与听觉科学学部，博士后</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2012 - 2015</div>
+                <div class="timeline-text">中科院脑功能与脑疾病重点实验室，博士后</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-text">中国科学技术大学，神经生物学博士</div>
+              </div>
+            </div>
+          </div>
+          <div class="pi-contact">
+            <div class="contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              fgu@scu.edu.cn
+            </div>
+            <div class="contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              成都市双流区 · 四川大学江安校区
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section class="section research" id="research">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Research</div>
+        <h2 class="section-title">研究方向</h2>
+        <p class="section-desc">多维度揭示汉语认知加工的神经机制</p>
+      </div>
+      <div class="research-grid">
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5-4 4-4 4 4 4 4-1.5 4-4 4-4-4-4-4z"/></svg>
+          </div>
+          <h3>汉字视觉加工</h3>
+          <p>利用ERP技术揭示汉字视觉加工的时间进程与神经机制，发现汉字的早期整词加工效应与平行语音加工特点。</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          </div>
+          <h3>语音加工机制</h3>
+          <p>研究汉语语音加工的侧抑制机制，探索语音辨别与失配负波（MMN）之间的关系，揭示跨语言语音加工差异。</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3>词汇加工与语义</h3>
+          <p>采用视觉失配负波范式研究词汇语义加工，揭示视觉词汇语义违反的神经响应特征及其时间进程。</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>二语习得与跨语言</h3>
+          <p>对比汉语与蒙古语等不同语言的词汇加工时程，探索第二语言习得中的早期词汇加工神经机制差异。</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3>应用认知神经科学</h3>
+          <p>将认知神经科学方法应用于视觉图标识别、媒介效果测评等交叉领域，拓展实验方法的实际应用。</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>手语认知神经</h3>
+          <p>探索手语词汇加工的认知机制，填补手语认知神经研究中视觉通道语言加工的理论空白。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section class="section publications" id="publications">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Publications</div>
+        <h2 class="section-title">学术成果</h2>
+        <p class="section-desc">以第一作者或通讯作者发表的高水平SCI/SSCI论文精选</p>
+      </div>
+      <div class="pub-list">
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div class="pub-text"><em>Yu, R.</em>, Wu, Y., & <em>Gu, F.*</em> Parallel phonological processing of Chinese characters revealed by flankers tasks. <em>Frontiers in Psychology, 14</em>, 1239256.</div>
+          <div class="pub-journal">SSCI</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div class="pub-text"><em>Hu, A.</em>, Liu, S., Yang, H., Hu, Y., & <em>Gu, F.*</em> Investigating app icon recognition with event-related potentials. <em>Neuroreport, 34</em>, 521-525.</div>
+          <div class="pub-journal">SCI</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div class="pub-text"><em>Huang, B.</em>, Yang, X., Dong, S., & <em>Gu, F.*</em> Visual event-related potentials reveal the early whole-word lexical processing of Chinese two-character words. <em>Neuropsychologia, 185</em>, 108571.</div>
+          <div class="pub-journal">SCI & SSCI</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div class="pub-text"><em>Zhang, K.</em>, <em>Gu, F.</em>, & <em>Yu, H.*</em> Early lexical processing of Chinese one-character words and Mongolian words: A comparative study using event-related potentials. <em>Frontiers in Psychology, 13</em>, 1061990.</div>
+          <div class="pub-journal">SSCI</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-year">2022</div>
+          <div class="pub-text"><em>Yu, R.</em>, Chen, J., Peng, Y., & <em>Gu, F.*</em> Visual event-related potentials reveal the early lexical processing of Chinese characters. <em>Neuropsychologia, 165</em>, 108132.</div>
+          <div class="pub-journal">SCI & SSCI</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-year">2020</div>
+          <div class="pub-text"><em>Hu, A.</em>, <em>Gu, F.*</em>, Wong, L. L. N., Tong, X., & <em>Zhang, X.*</em> Visual mismatch negativity elicited by semantic violations in visual words. <em>Brain Research, 147010</em>.</div>
+          <div class="pub-journal">SCI</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-year">2020</div>
+          <div class="pub-text"><em>Hu, A.</em>, Wang, M., Li, Y., Tang, Q., & <em>Gu, F.*</em> Dong speakers outperform Mandarin speakers in behavioral pitch discrimination. <em>Journal of the Acoustical Society of America, 147(1)</em>, EL62.</div>
+          <div class="pub-journal">SCI</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-year">2020</div>
+          <div class="pub-text"><em>Deng, Q.</em>, <em>Gu, F.</em>, & <em>Tong, S. X.*</em> Lexical processing in sign language: A visual mismatch negativity study. <em>Neuropsychologia, 148</em>, 107629.</div>
+          <div class="pub-journal">SCI & SSCI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities Section -->
+  <section class="section facilities" id="facilities">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Facilities</div>
+        <h2 class="section-title">实验设备</h2>
+        <p class="section-desc">传播科学与技术实验室配备完善的认知神经科学实验平台</p>
+      </div>
+      <div class="facilities-grid">
+        <div class="facility-card">
+          <div class="facility-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h4>眼动追踪系统</h4>
+          <p>Tobii Pro 系列眼动仪<br>支持阅读与视觉加工研究</p>
+        </div>
+        <div class="facility-card">
+          <div class="facility-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>脑电记录系统</h4>
+          <p>高密度EEG/ERP系统<br>多导联实时脑电信号采集</p>
+        </div>
+        <div class="facility-card">
+          <div class="facility-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h4>行为实验平台</h4>
+          <p>E-Prime / PsychoPy<br>标准化心理学实验范式</p>
+        </div>
+        <div class="facility-card">
+          <div class="facility-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h4>数据分析平台</h4>
+          <p>MATLAB / Python / EEGLAB<br>专业的神经数据分析工具</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Contact</div>
+        <h2 class="section-title">联系我们</h2>
+        <p class="section-desc">欢迎对认知神经科学感兴趣的同学和学者交流合作</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4>电子邮箱</h4>
+          <p><a href="mailto:fgu@scu.edu.cn">fgu@scu.edu.cn</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>办公地址</h4>
+          <p>四川省成都市双流区<br>四川大学江安校区文科楼</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h4>学院信息</h4>
+          <p><a href="http://lj.scu.edu.cn" target="_blank">四川大学文学与新闻学院<br>传播科学与技术实验室</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 语言符号认知神经科学实验室 · 四川大学文学与新闻学院</p>
+    <div class="footer-links">
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.research-card, .pub-item, .facility-card, .highlight-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Mobile menu toggle (simple)
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.querySelector('.nav-links');
+    mobileToggle.addEventListener('click', () => {
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '68px';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'white';
+        navLinks.style.padding = '20px 24px';
+        navLinks.style.gap = '16px';
+        navLinks.style.boxShadow = '0 4px 6px rgba(0,0,0,0.07)';
+        navLinks.style.borderRadius = '0 0 12px 12px';
+      }
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
