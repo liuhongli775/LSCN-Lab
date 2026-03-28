@@ -249,11 +249,11 @@
     .hero-bg-pattern {
       position: absolute;
       inset: 0;
-      opacity: 0.06;
       background-image:
-        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 40%),
-        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.08) 0%, transparent 45%);
+        linear-gradient(160deg, rgba(30,64,175,0.88), rgba(37,99,235,0.75)),
+        url('./assets/brain_research.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
     .hero-grid {
@@ -481,13 +481,27 @@
       position: relative;
     }
 
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: calc(var(--radius) + 4px);
+      object-fit: cover;
+      display: block;
+      box-shadow: var(--shadow-lg);
+    }
+
     .about-card-main {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      position: absolute;
+      bottom: 24px;
+      left: -12px;
+      right: 12px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.92), rgba(96,165,250,0.92));
+      backdrop-filter: blur(8px);
       border-radius: var(--radius);
-      padding: 40px;
+      padding: 24px 28px;
       color: white;
-      position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-lg);
     }
 
     .about-card-main::before {
@@ -502,15 +516,15 @@
 
     .about-card-main h3 {
       font-family: 'Noto Serif SC', serif;
-      font-size: 22px;
+      font-size: 17px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     .about-card-main p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.9;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
     }
 
     .about-card-float {
@@ -1041,15 +1055,27 @@
 
     .facility-card {
       text-align: center;
-      padding: 32px 20px;
+      padding: 0;
       border-radius: var(--radius);
       background: var(--bg-light);
       transition: var(--transition);
+      overflow: hidden;
     }
 
     .facility-card:hover {
       box-shadow: var(--shadow-md);
       transform: translateY(-2px);
+    }
+
+    .facility-card-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .facility-card-body {
+      padding: 24px 20px 28px;
     }
 
     .facility-icon {
@@ -1197,7 +1223,7 @@
 
     /* ===== Contact Section ===== */
     .contact {
-      background: linear-gradient(160deg, var(--primary-dark), var(--primary));
+      background: var(--bg-white);
       color: white;
       position: relative;
       overflow: hidden;
@@ -1207,14 +1233,23 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background: url('./assets/campus.jpg') center/cover no-repeat;
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    .contact::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(37,99,235,0.88), rgba(30,64,175,0.9));
+      z-index: 1;
     }
 
     .contact .section-tag {
       color: rgba(255,255,255,0.7);
+      position: relative;
+      z-index: 2;
     }
 
     .contact .section-tag::before,
@@ -1224,10 +1259,14 @@
 
     .contact .section-title {
       color: white;
+      position: relative;
+      z-index: 2;
     }
 
     .contact .section-desc {
       color: rgba(255,255,255,0.65);
+      position: relative;
+      z-index: 2;
     }
 
     .contact-grid {
@@ -1235,7 +1274,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .contact-card {
@@ -1357,6 +1396,10 @@
       .about-card-float {
         right: 16px;
         bottom: -20px;
+      }
+
+      .about-photo {
+        aspect-ratio: 16/9;
       }
 
       .pi-card {
@@ -1488,6 +1531,7 @@
       </div>
       <div class="about-grid">
         <div class="about-visual">
+          <img src="./assets/brain_research.jpg" alt="脑电研究" class="about-photo">
           <div class="about-card-main">
             <h3>语言 × 认知 × 神经科学</h3>
             <p>实验室致力于探索语言符号加工背后的认知神经机制。我们采用事件相关电位（ERP）、行为实验等先进技术手段，系统研究汉语相关加工过程，在心理语言学和神经语言学领域产出高水平科研成果。</p>
@@ -1649,6 +1693,14 @@
 
   <!-- ========== [6] 研究方向 & 学术成果：点击方向卡片展开相关论文 ========== -->
   <!-- Research Section -->
+  <!-- Full-width image banner -->
+  <div style="width:100%;height:200px;overflow:hidden;position:relative;">
+    <img src="./assets/reading_research.jpg" alt="Research" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.7);">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <p style="color:white;font-family:'Noto Serif SC',serif;font-size:24px;font-weight:600;letter-spacing:2px;text-shadow:0 2px 12px rgba(0,0,0,0.4);">探索语言认知的科学前沿</p>
+    </div>
+  </div>
+
   <section class="section research" id="research">
     <div class="section-container">
       <div class="section-header">
@@ -1883,32 +1935,44 @@
       </div>
       <div class="facilities-grid">
         <div class="facility-card">
-          <div class="facility-icon">
+          <img src="./assets/reading_research.jpg" class="facility-card-img" alt="眼动追踪研究">
+          <div class="facility-card-body">
+            <div class="facility-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h4>眼动追踪系统</h4>
+            <p>Tobii Pro 系列眼动仪<br>支持阅读与视觉加工研究</p>
           </div>
-          <h4>眼动追踪系统</h4>
-          <p>Tobii Pro 系列眼动仪<br>支持阅读与视觉加工研究</p>
         </div>
         <div class="facility-card">
-          <div class="facility-icon">
+          <img src="./assets/brain_research.jpg" class="facility-card-img" alt="脑电记录">
+          <div class="facility-card-body">
+            <div class="facility-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h4>脑电记录系统</h4>
+            <p>高密度EEG/ERP系统<br>多导联实时脑电信号采集</p>
           </div>
-          <h4>脑电记录系统</h4>
-          <p>高密度EEG/ERP系统<br>多导联实时脑电信号采集</p>
         </div>
         <div class="facility-card">
-          <div class="facility-icon">
+          <img src="./assets/library.jpg" class="facility-card-img" alt="行为实验">
+          <div class="facility-card-body">
+            <div class="facility-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h4>行为实验平台</h4>
+            <p>E-Prime / PsychoPy<br>标准化心理学实验范式</p>
           </div>
-          <h4>行为实验平台</h4>
-          <p>E-Prime / PsychoPy<br>标准化心理学实验范式</p>
         </div>
         <div class="facility-card">
-          <div class="facility-icon">
+          <img src="./assets/study_reading.jpg" class="facility-card-img" alt="数据分析">
+          <div class="facility-card-body">
+            <div class="facility-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h4>数据分析平台</h4>
+            <p>MATLAB / Python / EEGLAB<br>专业的神经数据分析工具</p>
           </div>
-          <h4>数据分析平台</h4>
-          <p>MATLAB / Python / EEGLAB<br>专业的神经数据分析工具</p>
         </div>
       </div>
     </div>
