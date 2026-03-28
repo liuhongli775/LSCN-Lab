@@ -914,6 +914,40 @@
       font-weight: 600;
     }
 
+    .pub-text a {
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .pub-text a:hover {
+      color: var(--primary);
+    }
+    .pub-text a::after {
+      content: ' ↗';
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .pub-text a:hover::after {
+      opacity: 0.7;
+    }
+
+    .scholar-link {
+      color: var(--primary) !important;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      border: 1px solid var(--primary);
+      padding: 3px 10px;
+      border-radius: 20px;
+      transition: var(--transition);
+      vertical-align: middle;
+    }
+    .scholar-link:hover {
+      background: var(--primary);
+      color: white !important;
+    }
+
     .pub-journal {
       font-size: 12px;
       color: var(--primary-light);
@@ -1561,47 +1595,47 @@
       <div class="section-header">
         <div class="section-tag">Publications</div>
         <h2 class="section-title">学术成果</h2>
-        <p class="section-desc">以第一作者或通讯作者发表的高水平SCI/SSCI论文精选</p>
+        <p class="section-desc">以第一作者或通讯作者发表的高水平SCI/SSCI论文精选　<a href="https://scholar.google.com/citations?user=8hery3UAAAAJ&hl=en" target="_blank" rel="noopener" class="scholar-link">📄 Google Scholar</a></p>
       </div>
       <div class="pub-list">
         <div class="pub-item">
           <div class="pub-year">2023</div>
-          <div class="pub-text"><em>Yu, R.</em>, Wu, Y., & <em>Gu, F.*</em> Parallel phonological processing of Chinese characters revealed by flankers tasks. <em>Frontiers in Psychology, 14</em>, 1239256.</div>
+          <div class="pub-text"><a href="https://doi.org/10.3389/fpsyg.2023.1239256" target="_blank" rel="noopener"><em>Yu, R.</em>, Wu, Y., & <em>Gu, F.*</em> Parallel phonological processing of Chinese characters revealed by flankers tasks. <em>Frontiers in Psychology, 14</em>, 1239256.</a></div>
           <div class="pub-journal">SSCI</div>
         </div>
         <div class="pub-item">
           <div class="pub-year">2023</div>
-          <div class="pub-text"><em>Hu, A.</em>, Liu, S., Yang, H., Hu, Y., & <em>Gu, F.*</em> Investigating app icon recognition with event-related potentials. <em>Neuroreport, 34</em>, 521-525.</div>
+          <div class="pub-text"><a href="https://doi.org/10.1097/WNR.0000000000001834" target="_blank" rel="noopener"><em>Hu, A.</em>, Liu, S., Yang, H., Hu, Y., & <em>Gu, F.*</em> Investigating app icon recognition with event-related potentials. <em>Neuroreport, 34</em>, 521-525.</a></div>
           <div class="pub-journal">SCI</div>
         </div>
         <div class="pub-item">
           <div class="pub-year">2023</div>
-          <div class="pub-text"><em>Huang, B.</em>, Yang, X., Dong, S., & <em>Gu, F.*</em> Visual event-related potentials reveal the early whole-word lexical processing of Chinese two-character words. <em>Neuropsychologia, 185</em>, 108571.</div>
+          <div class="pub-text"><a href="https://doi.org/10.1016/j.neuropsychologia.2023.108571" target="_blank" rel="noopener"><em>Huang, B.</em>, Yang, X., Dong, S., & <em>Gu, F.*</em> Visual event-related potentials reveal the early whole-word lexical processing of Chinese two-character words. <em>Neuropsychologia, 185</em>, 108571.</a></div>
           <div class="pub-journal">SCI & SSCI</div>
         </div>
         <div class="pub-item">
           <div class="pub-year">2023</div>
-          <div class="pub-text"><em>Zhang, K.</em>, <em>Gu, F.</em>, & <em>Yu, H.*</em> Early lexical processing of Chinese one-character words and Mongolian words: A comparative study using event-related potentials. <em>Frontiers in Psychology, 13</em>, 1061990.</div>
+          <div class="pub-text"><a href="https://doi.org/10.3389/fpsyg.2022.1061990" target="_blank" rel="noopener"><em>Zhang, K.</em>, <em>Gu, F.</em>, & <em>Yu, H.*</em> Early lexical processing of Chinese one-character words and Mongolian words: A comparative study using event-related potentials. <em>Frontiers in Psychology, 13</em>, 1061990.</a></div>
           <div class="pub-journal">SSCI</div>
         </div>
         <div class="pub-item">
           <div class="pub-year">2022</div>
-          <div class="pub-text"><em>Yu, R.</em>, Chen, J., Peng, Y., & <em>Gu, F.*</em> Visual event-related potentials reveal the early lexical processing of Chinese characters. <em>Neuropsychologia, 165</em>, 108132.</div>
+          <div class="pub-text"><a href="https://doi.org/10.1016/j.neuropsychologia.2021.108132" target="_blank" rel="noopener"><em>Yu, R.</em>, Chen, J., Peng, Y., & <em>Gu, F.*</em> Visual event-related potentials reveal the early lexical processing of Chinese characters. <em>Neuropsychologia, 165</em>, 108132.</a></div>
           <div class="pub-journal">SCI & SSCI</div>
         </div>
         <div class="pub-item">
           <div class="pub-year">2020</div>
-          <div class="pub-text"><em>Hu, A.</em>, <em>Gu, F.*</em>, Wong, L. L. N., Tong, X., & <em>Zhang, X.*</em> Visual mismatch negativity elicited by semantic violations in visual words. <em>Brain Research, 147010</em>.</div>
+          <div class="pub-text"><a href="https://doi.org/10.1016/j.brainres.2020.147010" target="_blank" rel="noopener"><em>Hu, A.</em>, <em>Gu, F.*</em>, Wong, L. L. N., Tong, X., & <em>Zhang, X.*</em> Visual mismatch negativity elicited by semantic violations in visual words. <em>Brain Research</em>.</a></div>
           <div class="pub-journal">SCI</div>
         </div>
         <div class="pub-item">
           <div class="pub-year">2020</div>
-          <div class="pub-text"><em>Hu, A.</em>, Wang, M., Li, Y., Tang, Q., & <em>Gu, F.*</em> Dong speakers outperform Mandarin speakers in behavioral pitch discrimination. <em>Journal of the Acoustical Society of America, 147(1)</em>, EL62.</div>
+          <div class="pub-text"><a href="https://doi.org/10.1121/10.0000604" target="_blank" rel="noopener"><em>Hu, A.</em>, Wang, M., Li, Y., Tang, Q., & <em>Gu, F.*</em> Dong speakers outperform Mandarin speakers in behavioral pitch discrimination. <em>JASA, 147(1)</em>, EL62.</a></div>
           <div class="pub-journal">SCI</div>
         </div>
         <div class="pub-item">
           <div class="pub-year">2020</div>
-          <div class="pub-text"><em>Deng, Q.</em>, <em>Gu, F.</em>, & <em>Tong, S. X.*</em> Lexical processing in sign language: A visual mismatch negativity study. <em>Neuropsychologia, 148</em>, 107629.</div>
+          <div class="pub-text"><a href="https://doi.org/10.1016/j.neuropsychologia.2020.107629" target="_blank" rel="noopener"><em>Deng, Q.</em>, <em>Gu, F.</em>, & <em>Tong, S. X.*</em> Lexical processing in sign language: A visual mismatch negativity study. <em>Neuropsychologia, 148</em>, 107629.</a></div>
           <div class="pub-journal">SCI & SSCI</div>
         </div>
       </div>
