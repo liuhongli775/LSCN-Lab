@@ -4,6 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>语言符号认知神经科学实验室 | 四川大学文学与新闻学院</title>
+
+  <!-- ============================================================
+       📝 编辑指南（使用任何文本编辑器/VS Code 都能编辑本文件）
+       
+       本文件是一个单页 HTML 网站，包含以下板块（按页面顺序排列）：
+       
+       [1] 🎨 样式区 — 第 7~1123 行（<style>标签内）
+           - 如需修改颜色、字体、间距等视觉样式，在 <style> 标签中搜索对应 CSS 变量
+           - 关键颜色变量在第 10~28 行的 :root 中定义（如 --primary 改主色调）
+       
+       [2] 🧭 导航栏 — 第 1124~1147 行（id="navbar"）
+           - 如需增加/删除导航链接，修改第 1133~1140 行的 <ul class="nav-links"> 内的 <li>
+       
+       [3] 🏠 首页横幅 — 第 1150~1189 行（class="hero"）
+           - 第 1165 行：修改实验室名称（<h1>）
+           - 第 1166 行：修改英文名称
+           - 第 1167~1169 行：修改实验室简介描述
+           - 第 1176~1185 行：修改统计数据（论文数、研究方向数、建室年份等）
+       
+       [4] 📖 关于实验室 — 第 1192~1248 行（id="about"）
+           - 修改实验室介绍文字和亮点标签
+       
+       [5] 👨‍🏫 负责人简介 — 第 1251~1311 行（id="pi"）
+           - 第 1260 行 <div class="pi-avatar">谷</div> — 目前用文字头像
+             ★ 添加个人照片：将此行替换为 <img src="照片路径.jpg" alt="谷丰" class="pi-photo-img">
+               照片文件放到仓库根目录或 assets 文件夹，路径写相对路径如 "./assets/photo.jpg"
+           - 第 1262~1263 行：修改姓名和职称
+           - 第 1269~1272 行：修改个人简介文字
+           - 第 1280~1296 行：修改学术履历时间线（添加/删减 <div class="timeline-item">）
+           - 第 1300~1301 行：修改邮箱
+           - 第 1304~1305 行：修改地址
+       
+       [6] 🔬 研究方向 — 第 1314~1366 行（id="research"）
+           - 每个研究方向是一个 <div class="research-card">（共6个）
+           - 添加新方向：复制一个 research-card 块，修改 <h3> 标题和 <p> 描述
+           - 删除方向：删除对应的 <div class="research-card">...</div>
+       
+       [7] 📄 学术成果 — 第 1369~1419 行（id="publications"）
+           - 每篇论文是一个 <div class="pub-item">
+           - 添加论文：复制一个 pub-item 块，修改年份、论文信息、期刊类型
+           - 通讯作者/第一作者用 <em>...</em> 包裹
+       
+       [8] ⚙️ 实验设备 — 第 1422~1460 行（id="facilities"）
+           - 每个设备是一个 <div class="facility-card">
+           - 添加/删除设备同上方法
+       
+       [9] 📧 联系我们 — 第 1463~1494 行（id="contact"）
+           - 修改邮箱、地址、学院链接等联系信息
+       
+       [10] 📋 页脚 — 第 1497~1506 行（class="footer"）
+           - 修改页脚的版权信息和链接
+       
+       [!] 添加实验室成员板块：
+           建议在负责人简介（#pi）和研究方向（#research）之间插入。
+           先复制一个 research-section 的样式结构作为模板，
+           然后在邮箱里把代码发给我，我帮你生成完整的成员板块样式。
+       
+       [!] 添加图片方法：
+           1. 将图片文件（如 lab-photo.jpg）放入仓库根目录或 assets/ 文件夹
+           2. 在 GitHub 仓库页面点击 "Add file → Upload files" 上传图片
+           3. 在 HTML 中用 <img src="./assets/lab-photo.jpg" alt="描述" style="...">
+              或用 CSS 背景图：background-image: url('./assets/lab-photo.jpg');
+       
+       编辑完成后，提交到 GitHub 即可自动更新网站。
+       ============================================================ -->
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
@@ -1121,6 +1187,7 @@
 <body>
 
   <!-- Navigation -->
+  <!-- ========== [2] 导航栏：修改导航链接在第 1193~1200 行的 <ul> 内 ========== -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#" class="nav-logo">
@@ -1146,6 +1213,7 @@
     </div>
   </nav>
 
+  <!-- ========== [3] 首页横幅：修改实验室名称/简介/数据统计 ========== -->
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg-pattern"></div>
@@ -1188,6 +1256,7 @@
     </div>
   </section>
 
+  <!-- ========== [4] 关于实验室：修改实验室介绍文字和亮点标签 ========== -->
   <!-- About Section -->
   <section class="section about" id="about">
     <div class="section-container">
@@ -1247,6 +1316,7 @@
     </div>
   </section>
 
+  <!-- ========== [5] 负责人简介：★添加个人照片见下方 pi-photo 处注释 ========== -->
   <!-- PI Section -->
   <section class="section pi-section" id="pi">
     <div class="section-container">
@@ -1257,6 +1327,9 @@
       </div>
       <div class="pi-card">
         <div class="pi-photo">
+          <!-- ★ 添加个人照片：将下面这行替换为：
+               <img src="./assets/photo.jpg" alt="谷丰" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
+               并将照片上传到仓库的 assets/ 文件夹 -->
           <div class="pi-avatar">谷</div>
           <div class="pi-name-title">
             <h3>谷丰</h3>
@@ -1310,6 +1383,36 @@
     </div>
   </section>
 
+  <!-- ★★★ 新增实验室成员板块的位置 ★★★
+       如果要添加"实验室成员"板块，请告诉我具体成员信息，我会帮你生成完整代码。
+       该板块建议插入在此处（负责人与研究方向之间）。
+       
+       或者你可以按照以下模板手动添加：
+       
+       <section class="section members" id="members">
+         <div class="section-container">
+           <div class="section-header">
+             <div class="section-tag">Members</div>
+             <h2 class="section-title">实验室成员</h2>
+             <p class="section-desc">这里写一段简短描述</p>
+           </div>
+           <div class="facilities-grid">
+             <!-- 每个成员一个 facility-card 块（复用设备卡片的样式） -->
+             <div class="facility-card">
+               <div class="facility-icon">👩‍🔬</div>
+               <h4>姓名</h4>
+               <p>年级 / 研究方向<br>一句话介绍</p>
+             </div>
+             <!-- 复制上面的 facility-card 块来添加更多成员 -->
+           </div>
+         </div>
+       </section>
+       
+       ⚠️ 注意：添加新section后，还需要在导航栏（#navbar 的 <ul class="nav-links">）中也加一个链接：
+       <li><a href="#members">实验室成员</a></li>
+       ★★★ -->
+
+  <!-- ========== [6] 研究方向：添加/删除方向（复制/删除整个 research-card 块） ========== -->
   <!-- Research Section -->
   <section class="section research" id="research">
     <div class="section-container">
@@ -1365,6 +1468,7 @@
     </div>
   </section>
 
+  <!-- ========== [7] 学术成果：添加论文（复制 pub-item 块），第一/通讯作者用 <em> 包裹 ========== -->
   <!-- Publications Section -->
   <section class="section publications" id="publications">
     <div class="section-container">
@@ -1418,6 +1522,7 @@
     </div>
   </section>
 
+  <!-- ========== [8] 实验设备：如需增减设备，复制/删除 facility-card 块 ========== -->
   <!-- Facilities Section -->
   <section class="section facilities" id="facilities">
     <div class="section-container">
@@ -1459,6 +1564,7 @@
     </div>
   </section>
 
+  <!-- ========== [9] 联系我们：修改邮箱、地址、学院链接等 ========== -->
   <!-- Contact Section -->
   <section class="section contact" id="contact">
     <div class="section-container">
@@ -1494,6 +1600,7 @@
   </section>
 
   <!-- Footer -->
+  <!-- ========== [10] 页脚：修改版权信息和链接 ========== -->
   <footer class="footer">
     <p>&copy; 2025 语言符号认知神经科学实验室 · 四川大学文学与新闻学院</p>
     <div class="footer-links">
