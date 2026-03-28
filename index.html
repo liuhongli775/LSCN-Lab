@@ -971,6 +971,81 @@
       line-height: 1.7;
     }
 
+    /* ===== Members Section ===== */
+    .members-section {
+      background: var(--bg-primary);
+    }
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 36px;
+      margin-top: 48px;
+    }
+    @media (max-width: 480px) {
+      .members-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .member-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 20px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .member-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(100, 108, 255, 0.25);
+      box-shadow: 0 20px 60px rgba(100, 108, 255, 0.1);
+    }
+    .member-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      flex-shrink: 0;
+      margin-bottom: 20px;
+    }
+    .member-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .member-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 10px 0;
+    }
+    .member-direction {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--accent);
+      padding: 5px 14px;
+      background: rgba(100, 108, 255, 0.1);
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .member-direction svg {
+      flex-shrink: 0;
+    }
+    .member-intro {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+
     /* ===== Contact Section ===== */
     .contact {
       background: linear-gradient(160deg, var(--primary-dark), var(--primary));
@@ -1200,6 +1275,7 @@
       <ul class="nav-links">
         <li><a href="#about">关于实验室</a></li>
         <li><a href="#pi">负责人</a></li>
+        <li><a href="#members">实验室成员</a></li>
         <li><a href="#research">研究方向</a></li>
         <li><a href="#publications">学术成果</a></li>
         <li><a href="#facilities">实验设备</a></li>
@@ -1380,34 +1456,47 @@
     </div>
   </section>
 
-  <!-- ★★★ 新增实验室成员板块的位置 ★★★
-       如果要添加"实验室成员"板块，请告诉我具体成员信息，我会帮你生成完整代码。
-       该板块建议插入在此处（负责人与研究方向之间）。
-       
-       或者你可以按照以下模板手动添加：
-       
-       <section class="section members" id="members">
-         <div class="section-container">
-           <div class="section-header">
-             <div class="section-tag">Members</div>
-             <h2 class="section-title">实验室成员</h2>
-             <p class="section-desc">这里写一段简短描述</p>
-           </div>
-           <div class="facilities-grid">
-             <!-- 每个成员一个 facility-card 块（复用设备卡片的样式） -->
-             <div class="facility-card">
-               <div class="facility-icon">👩‍🔬</div>
-               <h4>姓名</h4>
-               <p>年级 / 研究方向<br>一句话介绍</p>
-             </div>
-             <!-- 复制上面的 facility-card 块来添加更多成员 -->
-           </div>
-         </div>
-       </section>
-       
-       ⚠️ 注意：添加新section后，还需要在导航栏（#navbar 的 <ul class="nav-links">）中也加一个链接：
-       <li><a href="#members">实验室成员</a></li>
-       ★★★ -->
+  <!-- ========== [5.5] 实验室成员：添加/删除成员（复制/删除整个 member-card 块） ========== -->
+  <!-- Members Section -->
+  <section class="section members-section" id="members">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Members</div>
+        <h2 class="section-title">实验室成员</h2>
+        <p class="section-desc">汇聚多学科背景的研究力量，共同探索语言与认知的科学奥秘</p>
+      </div>
+      <div class="members-grid">
+        <!-- 成员卡片：刘鸿利 -->
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="./assets/成员1_刘鸿利.jpg" alt="刘鸿利">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">刘鸿利</h3>
+            <div class="member-direction">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <span>Language Comprehension · 语言理解</span>
+            </div>
+            <p class="member-intro">主要研究方向为语言理解（Language Comprehension），致力于探索语言加工过程中的认知机制与神经基础，运用实验方法揭示人类理解语言符号的认知过程。</p>
+          </div>
+        </div>
+        <!-- 成员卡片：宋梦冉 -->
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="./assets/成员2_宋梦冉.jpg" alt="宋梦冉">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">宋梦冉</h3>
+            <div class="member-direction">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <span>汉语国际教育 · Teaching Chinese to Speakers of Other Languages</span>
+            </div>
+            <p class="member-intro">主要研究方向为汉语国际教育，聚焦于作为第二语言的汉语教学与习得机制研究，探索跨文化语境下汉语认知加工的特点及教学策略优化。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ========== [6] 研究方向：添加/删除方向（复制/删除整个 research-card 块） ========== -->
   <!-- Research Section -->
